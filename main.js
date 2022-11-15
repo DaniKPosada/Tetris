@@ -60,10 +60,22 @@ for(let i=0;i<360;i+=horizontal){
         ctx.stroke();
         ctx.closePath();
     }
+    if(y>=canvas.height)
+{
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    y=y-tamanocuadro*2;
+    dibujarBloque();
+    clearInterval(movimiento);
+}
 }
 
 }
-setInterval(dibujar,1000);
+
+var movimiento=setInterval(dibujar,1000);
+var fichasQuedan=[];
+
+
+
 //Un cuadrado-->
 //ctx.beginPath();
 //ctx.rect(0,0, 40, 40);
