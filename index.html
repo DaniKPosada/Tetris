@@ -13,6 +13,7 @@
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
         var vertical=24, horizontal=24;
+        //tiene en cuenta el tamaño pedido en los requerimientos
         var tamanocuadro = 40;
         for(let i=0;i<360;i+=horizontal){
             for(let j=0;j<600;j+=vertical){
@@ -44,15 +45,17 @@
             [2,0,3,5,4],
             [1,0,5,6,3]
         ];
-        ctx.beginPath();
-        ctx.rect(pos[piezas[0][1]][0], pos[piezas[0][1]][1], tamanocuadro, tamanocuadro);
-        ctx.rect(pos[piezas[0][2]][0], pos[piezas[0][2]][1], tamanocuadro, tamanocuadro);
-        ctx.rect(pos[piezas[0][3]][0], pos[piezas[0][3]][1], tamanocuadro, tamanocuadro);
-        ctx.rect(pos[piezas[0][4]][0], pos[piezas[0][4]][1], tamanocuadro, tamanocuadro);
-        
-        ctx.fillStyle = "#FF0000";
-        ctx.fill();
-        ctx.closePath();
+        //creación de pieza t hacia abajo
+        for(i=1;i<5;i++){
+            ctx.beginPath();
+            ctx.rect(pos[piezas[0][i]][0]+tamanocuadro, pos[piezas[0][i]][1], tamanocuadro, tamanocuadro);
+            ctx.fillStyle = "#FF0000";
+            ctx.strokeStyle = "rgba(0,0,0, 1)";
+            ctx.stroke();
+            ctx.fill();
+            ctx.closePath();
+        }
+
         //Un cuadrado-->
         //ctx.beginPath();
         //ctx.rect(0,0, 40, 40);
