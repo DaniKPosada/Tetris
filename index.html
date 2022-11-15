@@ -8,13 +8,32 @@
     <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-    <canvas id="myCanvas" width="480" height="320"></canvas>
+    <canvas id="myCanvas" width="360" height="600"></canvas>
     <script>
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
+        var vertical=24, horizontal=24;
+        //var gw=360/horizontal;
+        //var gh=600/vertical;
+        //function dibujarCuadrado(x,y,color){
+        //    cxt.fillStyle=color;
+        //    var rx=x*gw;
+        //    var ry=y*gh;
+        //    context.fillRect(rx,ry,gw,gh);
+        //}
+        for(let i=0;i<360;i+=horizontal){
+            for(let j=0;j<600;j+=vertical){
+                ctx.beginPath();
+                ctx.rect(i, j, vertical, horizontal);
+                ctx.strokeStyle = "rgba(0, 0, 0, 0.1)";
+                ctx.stroke();
+                ctx.closePath();
+            }
+        }
+
         //Un cuadrado-->
         ctx.beginPath();
-        ctx.rect(20, 40, 50, 50);
+        ctx.rect(0, 0, 40, 40);
         ctx.fillStyle = "#FF0000";
         ctx.fill();
         ctx.closePath();
