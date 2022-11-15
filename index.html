@@ -13,14 +13,7 @@
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
         var vertical=24, horizontal=24;
-        //var gw=360/horizontal;
-        //var gh=600/vertical;
-        //function dibujarCuadrado(x,y,color){
-        //    cxt.fillStyle=color;
-        //    var rx=x*gw;
-        //    var ry=y*gh;
-        //    context.fillRect(rx,ry,gw,gh);
-        //}
+        var tamanocuadro = 40;
         for(let i=0;i<360;i+=horizontal){
             for(let j=0;j<600;j+=vertical){
                 ctx.beginPath();
@@ -30,13 +23,42 @@
                 ctx.closePath();
             }
         }
-
-        //Un cuadrado-->
+        //Coordenadas relativas a un cuadro central de una pieza de tetris básica
+        var pos=[
+            [0,0],
+            [0,tamanocuadro],
+            [-tamanocuadro,0],
+            [tamanocuadro,0],
+            [-tamanocuadro,-tamanocuadro],
+            [0,-tamanocuadro],
+            [tamanocuadro,-tamanocuadro],
+            [0,-2*tamanocuadro]
+        ];
+        //Piezas construidas a partir de la base pos
+        var piezas=[
+            [4,0,1,2,3], 
+            [4,0,1,5,6],  
+            [4,0,1,5,4],
+            [2,0,1,5,7],
+            [2,0,2,5,6],
+            [2,0,3,5,4],
+            [1,0,5,6,3]
+        ];
         ctx.beginPath();
-        ctx.rect(0, 0, 40, 40);
+        ctx.rect(pos[piezas[0][1]][0], pos[piezas[0][1]][1], tamanocuadro, tamanocuadro);
+        ctx.rect(pos[piezas[0][2]][0], pos[piezas[0][2]][1], tamanocuadro, tamanocuadro);
+        ctx.rect(pos[piezas[0][3]][0], pos[piezas[0][3]][1], tamanocuadro, tamanocuadro);
+        ctx.rect(pos[piezas[0][4]][0], pos[piezas[0][4]][1], tamanocuadro, tamanocuadro);
+        
         ctx.fillStyle = "#FF0000";
         ctx.fill();
         ctx.closePath();
+        //Un cuadrado-->
+        //ctx.beginPath();
+        //ctx.rect(0,0, 40, 40);
+        //ctx.fillStyle = "#FF0000";
+        //ctx.fill();
+        //ctx.closePath();
         //Un circulo
         ctx.beginPath();
         ctx.arc(240, 160, 20, 0, Math.PI*2, false);
